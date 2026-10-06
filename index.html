@@ -1,0 +1,831 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>A Jugar se Dijo</title>
+<meta name="description" content="Dossier y ecosistema digital de transferencia de la capacitación de la Mesa de Educación Física de San Vicente Ferrer (2012) a docentes de primaria.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=IBM+Plex+Mono:wght@400;500&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&display=swap">
+<style>
+:root{
+  --paper:#F3F5EC; --card:#FFFFFF; --soft:#E6EBDC; --ink:#17231C; --muted:#56645B;
+  --line:#CFD7C4; --field:#1D6A44; --field-ink:#FFFFFF; --sun:#E2B714; --sun-ink:#2A2300;
+  --warn:#9A4A12; --ok:#1D6A44;
+  --display:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
+  --body:"Literata",Georgia,"Times New Roman",serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --paper:#0F1712; --card:#16211A; --soft:#1C2A21; --ink:#E6ECE2; --muted:#9FAEA2;
+    --line:#2A3A30; --field:#58C489; --field-ink:#0B1A11; --sun:#F0CB3C; --sun-ink:#221C00; --warn:#E59A5F; --ok:#58C489;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --paper:#0F1712; --card:#16211A; --soft:#1C2A21; --ink:#E6ECE2; --muted:#9FAEA2;
+  --line:#2A3A30; --field:#58C489; --field-ink:#0B1A11; --sun:#F0CB3C; --sun-ink:#221C00; --warn:#E59A5F; --ok:#58C489;
+}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;margin:0}
+a{color:var(--field);text-underline-offset:3px}
+a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid var(--sun);outline-offset:2px}
+h1,h2,h3,h4{font-family:var(--display);font-weight:700;line-height:1.08;text-wrap:balance;margin:0;letter-spacing:.01em}
+h2{font-size:clamp(2rem,4.5vw,2.8rem);text-transform:uppercase}
+h3{font-size:1.45rem;text-transform:uppercase;letter-spacing:.02em}
+h4{font-size:1.15rem;text-transform:uppercase;letter-spacing:.03em}
+p{margin:0}
+.label{font-family:var(--mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.wrap{max-width:1180px;margin:0 auto;padding-inline:20px}
+.layout{display:grid;grid-template-columns:220px minmax(0,1fr);gap:48px;align-items:start}
+@media (max-width:960px){.layout{grid-template-columns:minmax(0,1fr);gap:0}}
+
+/* nav */
+nav.side{position:sticky;top:calc(env(safe-area-inset-top,0px) + 24px);padding-block:32px;display:flex;flex-direction:column;gap:2px}
+nav.side a{display:flex;gap:10px;align-items:baseline;padding:6px 10px;border-radius:6px;color:var(--ink);text-decoration:none;font-size:.95rem}
+nav.side a span{font-family:var(--mono);font-size:.7rem;color:var(--muted);min-width:2.2em}
+nav.side a:hover{background:var(--soft)}
+nav.side a.on{background:var(--field);color:var(--field-ink)}
+nav.side a.on span{color:var(--field-ink)}
+nav.side .grp{margin-top:14px;padding-left:10px}
+@media (max-width:960px){
+  nav.side{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;flex-direction:row;overflow-x:auto;background:var(--paper);border-bottom:1px solid var(--line);padding-block:8px;margin-inline:-20px;padding-inline:20px;gap:4px;scrollbar-width:none}
+  nav.side a{white-space:nowrap;font-size:.88rem}
+  nav.side .grp{display:none}
+}
+
+/* hero */
+header.hero{padding-block:40px 32px;border-bottom:1px solid var(--line)}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:40px;align-items:end}
+@media (max-width:860px){.hero-grid{grid-template-columns:minmax(0,1fr)}}
+.hero h1{font-size:clamp(3.2rem,9vw,6.4rem);text-transform:uppercase;line-height:.9}
+.hero h1 em{font-style:normal;color:var(--field)}
+.hero .kicker{display:flex;flex-wrap:wrap;gap:8px 16px;margin-bottom:18px}
+.hero .lede{font-size:1.15rem;max-width:40em;margin-top:18px}
+.pitch{background:var(--field);color:var(--field-ink);border-radius:10px;padding:22px;display:grid;gap:14px}
+.pitch .label{color:var(--field-ink);opacity:.85}
+.pitch p{font-size:1rem}
+.court{position:relative;height:120px;border:2px solid currentColor;border-radius:4px;opacity:.9}
+.court::before{content:"";position:absolute;left:50%;top:0;bottom:0;border-left:2px solid currentColor}
+.court::after{content:"";position:absolute;left:50%;top:50%;width:54px;height:54px;border:2px solid currentColor;border-radius:50%;transform:translate(-50%,-50%)}
+.court i{position:absolute;top:28%;bottom:28%;width:34px;border:2px solid currentColor}
+.court i:first-child{left:-2px;border-left:none}.court i:last-child{right:-2px;border-right:none}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-top:28px}
+@media (max-width:640px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.stat{background:var(--card);padding:16px 18px;display:grid;gap:4px}
+.stat b{font-family:var(--display);font-size:2.4rem;line-height:1;font-variant-numeric:tabular-nums}
+.stat small{font-size:.85rem;color:var(--muted);line-height:1.35}
+
+/* sections */
+main{min-width:0}
+section.s{padding-block:56px;border-bottom:1px solid var(--line);display:grid;gap:24px;scroll-margin-top:64px}
+.s-head{display:grid;gap:10px;max-width:46em}
+.s-head .eje{display:inline-flex;gap:8px;align-items:center}
+.chip{display:inline-block;font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:999px;background:var(--sun);color:var(--sun-ink)}
+.chip.g{background:var(--field);color:var(--field-ink)}
+.chip.o{background:transparent;border:1px solid var(--line);color:var(--muted)}
+.prose{display:grid;gap:14px;max-width:44em}
+.sub{display:grid;gap:14px}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+@media (max-width:820px){.grid2,.grid3{grid-template-columns:minmax(0,1fr)}}
+.box{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;display:grid;gap:10px;align-content:start}
+.box.soft{background:var(--soft);border-color:transparent}
+.note{border-left:4px solid var(--sun);background:var(--soft);padding:12px 16px;border-radius:0 8px 8px 0;font-size:.95rem;max-width:48em}
+ul.clean{margin:0;padding-left:1.1em;display:grid;gap:6px}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--card)}
+table{border-collapse:collapse;width:100%;font-size:.93rem;min-width:640px}
+th,td{padding:10px 12px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+th{font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:500;background:var(--soft)}
+tr:last-child td{border-bottom:none}
+td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+
+/* SRL scale */
+.srl{display:grid;grid-template-columns:repeat(9,minmax(0,1fr));gap:4px}
+.srl div{border:1px solid var(--line);border-radius:6px;padding:8px 6px;min-height:92px;display:grid;align-content:start;gap:4px;background:var(--card);font-size:.74rem;line-height:1.25}
+.srl b{font-family:var(--display);font-size:1.5rem}
+.srl .hit{background:var(--field);color:var(--field-ink);border-color:var(--field)}
+.srl .goal{background:var(--sun);color:var(--sun-ink);border-color:var(--sun)}
+@media (max-width:760px){.srl{grid-template-columns:repeat(3,minmax(0,1fr))}}
+
+/* personas */
+.persona{display:grid;gap:10px}
+.persona .who{display:flex;gap:12px;align-items:center}
+.avatar{width:44px;height:44px;border-radius:50%;background:var(--soft);display:grid;place-items:center;font-family:var(--display);font-size:1.2rem;color:var(--field);border:2px solid var(--field);flex:none}
+.persona dl{margin:0;display:grid;gap:6px;font-size:.92rem}
+.persona dt{font-family:var(--mono);font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.persona dd{margin:0}
+
+/* journey */
+.journey{display:grid;grid-template-columns:repeat(7,minmax(150px,1fr));gap:10px;min-width:1080px}
+.jwrap{overflow-x:auto;padding-bottom:6px}
+.stage{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px;display:grid;gap:8px;align-content:start;font-size:.88rem;position:relative}
+.stage .n{font-family:var(--display);font-size:2rem;line-height:1;color:var(--field)}
+.stage .row{display:grid;gap:2px}
+.mood{height:8px;border-radius:4px;background:var(--line);overflow:hidden}
+.mood span{display:block;height:100%;background:var(--field)}
+
+/* finder */
+.finder-ctrl{display:flex;flex-wrap:wrap;gap:12px;align-items:end}
+.finder-ctrl label{display:grid;gap:4px;font-size:.85rem}
+select,input[type=search]{font:inherit;font-size:.95rem;padding:8px 10px;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--ink);min-width:0}
+.games{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px}
+.game{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:grid;gap:6px;align-content:start}
+.game .top{display:flex;justify-content:space-between;gap:8px;align-items:baseline}
+.game .no{font-family:var(--mono);font-size:.72rem;color:var(--muted)}
+.game h4{font-size:1.1rem}
+.game .meta{display:flex;flex-wrap:wrap;gap:6px}
+.count{font-family:var(--mono);font-size:.8rem;color:var(--muted)}
+button.btn{font:inherit;font-size:.9rem;padding:8px 14px;border-radius:8px;border:1px solid var(--field);background:transparent;color:var(--field);cursor:pointer}
+button.btn:hover{background:var(--field);color:var(--field-ink)}
+
+/* ficha */
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:0}
+details summary{cursor:pointer;padding:14px 18px;font-family:var(--display);font-size:1.2rem;text-transform:uppercase;letter-spacing:.02em;list-style:none;display:flex;justify-content:space-between;gap:12px}
+details summary::after{content:"+";font-family:var(--mono)}
+details[open] summary::after{content:"−"}
+details .in{padding:0 18px 18px;display:grid;gap:10px}
+.kv{display:grid;grid-template-columns:120px minmax(0,1fr);gap:6px 14px;font-size:.93rem}
+.kv dt{font-family:var(--mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);padding-top:3px}
+.kv dd{margin:0}
+@media (max-width:520px){.kv{grid-template-columns:minmax(0,1fr)}}
+
+/* timeline */
+.tl{display:grid;gap:0;border-left:2px solid var(--field);margin-left:6px}
+.tl div{padding:0 0 16px 18px;position:relative;display:grid;gap:2px}
+.tl div::before{content:"";position:absolute;left:-7px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--paper);border:2px solid var(--field)}
+.tl time{font-family:var(--mono);font-size:.78rem;color:var(--muted)}
+
+/* videos */
+.vid{display:grid;gap:6px}
+.vid .src{font-family:var(--mono);font-size:.72rem;color:var(--muted)}
+
+footer{padding-block:40px 60px;color:var(--muted);font-size:.9rem;display:grid;gap:10px}
+.cc{display:inline-flex;gap:6px;flex-wrap:wrap}
+@media (prefers-reduced-motion:no-preference){ .game{transition:border-color .15s} .game:hover{border-color:var(--field)} }
+</style>
+</head><body>
+
+<div class="wrap">
+<header class="hero" id="inicio">
+  <div class="hero-grid">
+    <div>
+      <div class="kicker"><span class="label">Propuesta digital de transferencia del conocimiento</span><span class="label">Opción A · Experiencia educativa exitosa</span></div>
+      <h1>A jugar <em>se dijo</em></h1>
+      <p class="lede">La capacitación de la Mesa Pedagógica de Educación Física de San Vicente Ferrer, Antioquia, para los docentes de primaria del municipio, lunes 29 de octubre de 2012. En este ecosistema la experiencia se convierte en un kit abierto que cualquier maestro, institución o mesa de área puede replicar.</p>
+    </div>
+    <aside class="pitch" aria-label="Resumen de la propuesta">
+      <div class="court" aria-hidden="true"><i></i><i></i></div>
+      <span class="label">La idea en 30 segundos</span>
+      <p>En la primaria rural la educación física la dan maestros que no son licenciados en el área. En 2012 un grupo de docentes del municipio respondió con una jornada de 6 horas entre pares y un paquete con un plan de área, una cartilla de 44 juegos y los estándares departamentales. Aquí lo empaquetamos para que otros lo repliquen hoy.</p>
+    </aside>
+  </div>
+  <div class="stats" role="list">
+    <div class="stat" role="listitem"><b>6 h</b><small>jornada de formación entre pares, dirigida por la Mesa</small></div>
+    <div class="stat" role="listitem"><b>44</b><small>juegos en la cartilla "A jugar se dijo", organizados por capacidades</small></div>
+    <div class="stat" role="listitem"><b>96</b><small>páginas del Plan Municipal de Área de Educación Física (2011)</small></div>
+    <div class="stat" role="listitem"><b>≈40</b><small>sedes oficiales en el municipio: 1 IE urbana, 5 IE rurales y 34 CER*</small></div>
+  </div>
+</header>
+
+<div class="layout">
+<nav class="side" aria-label="Secciones del dossier">
+  <a href="#inicio" data-s="inicio"><span>00</span>Inicio</a>
+  <div class="grp label">Los 5 ejes</div>
+  <a href="#eje1" data-s="eje1"><span>E1</span>Diagnóstico</a>
+  <a href="#eje2" data-s="eje2"><span>E2</span>Empaquetamiento</a>
+  <a href="#eje3" data-s="eje3"><span>E3</span>Medios y viaje</a>
+  <a href="#eje4" data-s="eje4"><span>E4</span>Indicadores</a>
+  <a href="#eje5" data-s="eje5"><span>E5</span>Ética y licencias</a>
+  <div class="grp label">Opción A</div>
+  <a href="#guia" data-s="guia"><span>A1</span>Guía de transferencia</a>
+  <a href="#impacto" data-s="impacto"><span>A2</span>Evidencia de impacto</a>
+  <a href="#kit" data-s="kit"><span>A3</span>Kit REA</a>
+  <div class="grp label">Recursos</div>
+  <a href="#videos" data-s="videos"><span>R1</span>Videoteca</a>
+  <a href="#archivo" data-s="archivo"><span>R2</span>Archivo 2012</a>
+  <a href="#creditos" data-s="creditos"><span>R3</span>Créditos</a>
+</nav>
+
+<main>
+<section class="s" id="eje1">
+  <div class="s-head">
+    <span class="eje"><span class="chip">Eje 1</span><span class="label">Caracterización y diagnóstico del conocimiento</span></span>
+    <h2>De dónde viene y qué resuelve</h2>
+  </div>
+
+  <div class="sub">
+    <h3>Contextualización</h3>
+    <div class="prose">
+      <p><strong>Origen.</strong> San Vicente Ferrer es un municipio del Oriente antioqueño con población mayoritariamente rural. Entre 2011 y 2014 funcionó allí la <em>Mesa Pedagógica de Educación Física</em>, un colectivo de docentes y monitores de las instituciones educativas San Vicente Ferrer (urbana), Santa Rita, Corrientes, Chaparral, La Magdalena y Ovejas, reconocido por la Secretaría de Educación Municipal y la Departamental. La Mesa construyó en 2011 un Plan Municipal de Área y, con base en él, organizó la capacitación del <strong>lunes 29 de octubre de 2012</strong>: una jornada de 6 horas para todos los docentes de primaria del municipio, dirigida por los integrantes de la Mesa. Cada participante recibió un <em>paquete de memorias</em> grabado en DVD.</p>
+      <p><strong>Problema que resuelve.</strong> El diagnóstico del plan de área es directo: los niños mostraban un desarrollo motriz insuficiente para las tareas de clase y los eventos deportivos. Las causas identificadas fueron la falta de planes actualizados, la carencia de licenciados en el área y la desmotivación de parte del profesorado para ofrecerla con calidad. En la básica primaria, sobre todo en los Centros Educativos Rurales que trabajan con modelos flexibles, la clase de educación física queda en manos del maestro de aula, que enseña todas las áreas y rara vez tiene formación específica.</p>
+      <p><strong>Valor diferencial.</strong></p>
+      <ul class="clean">
+        <li><strong>Nace del territorio.</strong> El plan se hizo porque los anteriores "no fueron hechos teniendo como referencia" las características de los estudiantes del municipio (Plan de Área, 2011).</li>
+        <li><strong>Formación entre pares.</strong> Colegas del mismo municipio forman a colegas, con materiales ya probados en sus aulas.</li>
+        <li><strong>Conecta política y aula.</strong> El paquete une tres niveles en un solo kit: el referente departamental (Estándares de Antioquia), el plan municipal y la cartilla de juegos lista para usar.</li>
+        <li><strong>Tuvo continuidad.</strong> Después vinieron las tareas de planeación de sesiones de 4.° y 5.° (2013), la jornada lúdica para docentes acogida por la Secretaría (2014) y la participación en el Día del Movimiento.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sub">
+    <h3>Nivel de madurez · Social Readiness Level (SRL)</h3>
+    <p class="prose">Por tratarse de una innovación pedagógica y social, usamos la escala SRL de 9 niveles (Innovation Fund Denmark). La experiencia <strong>llegó a SRL 6</strong> en 2012: se demostró en el entorno real, con todos los docentes de primaria del municipio y con el aval de la Secretaría. No avanzó más porque no hubo seguimiento sistemático, no quedaron registros de asistencia ni de uso posterior y la Mesa ya no está activa. La propuesta busca llevarla a <strong>SRL 7</strong> (refinar y volver a probar en contexto) y dejar lista la ruta a <strong>SRL 8</strong> (solución y plan de adopción social completos).</p>
+    <div class="srl" role="list" aria-label="Escala SRL">
+      <div role="listitem"><b>1</b>Identificar el problema</div>
+      <div role="listitem"><b>2</b>Formular problema, solución e impacto</div>
+      <div role="listitem"><b>3</b>Prueba inicial con actores</div>
+      <div role="listitem"><b>4</b>Piloto en entorno relevante</div>
+      <div role="listitem"><b>5</b>Solución validada por actores</div>
+      <div role="listitem" class="hit"><b>6</b>Demostrada en entorno real · 2012</div>
+      <div role="listitem" class="goal"><b>7</b>Refinada y reprobada · meta</div>
+      <div role="listitem"><b>8</b>Solución y plan de adopción completos</div>
+      <div role="listitem"><b>9</b>Probada y sostenida</div>
+    </div>
+    <p class="note">Qué se necesita para subir de nivel: digitalizar y actualizar el kit (este ecosistema), repetir la jornada en al menos una institución piloto, recoger datos de implementación con los indicadores del Eje 4 y formalizar un aliado institucional que la sostenga.</p>
+  </div>
+
+  <div class="sub">
+    <h3>Mapeo de usuarios finales y receptores · Personas</h3>
+    <p class="prose">Las personas son arquetipos construidos a partir del diagnóstico del plan de área y de la experiencia de la Mesa. Los nombres son ficticios.</p>
+    <div class="grid3">
+      <article class="box persona">
+        <div class="who"><div class="avatar" aria-hidden="true">LM</div><div><h4>Luz Marina</h4><span class="label">Usuaria primaria · docente de aula</span></div></div>
+        <dl>
+          <dt>Perfil</dt><dd>Maestra de un Centro Educativo Rural, grupo multigrado de 1.° a 5.°. Enseña todas las áreas y no tiene formación en educación física.</dd>
+          <dt>Necesita</dt><dd>Juegos listos para usar, explicados en una página, con la edad indicada y poco material.</dd>
+          <dt>Frustraciones</dt><dd>Conectividad intermitente, cancha improvisada y no saber cómo evaluar la clase.</dd>
+          <dt>Qué le damos</dt><dd>Fichas imprimibles, videos de un minuto y una plantilla de sesión.</dd>
+        </dl>
+      </article>
+      <article class="box persona">
+        <div class="who"><div class="avatar" aria-hidden="true">AF</div><div><h4>Andrés</h4><span class="label">Usuario primario · docente o monitor nuevo</span></div></div>
+        <dl>
+          <dt>Perfil</dt><dd>Licenciado o monitor deportivo que acaba de llegar al municipio o a la institución.</dd>
+          <dt>Necesita</dt><dd>Entender rápido el plan de área, la secuencia por grados y cómo se trabaja en el territorio.</dd>
+          <dt>Frustraciones</dt><dd>Documentos extensos y dispersos, y ninguna inducción al área.</dd>
+          <dt>Qué le damos</dt><dd>Ruta de lectura del plan, buscador de juegos por capacidad y la guía de réplica.</dd>
+        </dl>
+      </article>
+      <article class="box persona">
+        <div class="who"><div class="avatar" aria-hidden="true">RC</div><div><h4>Rectora Clara</h4><span class="label">Receptora · directiva institucional</span></div></div>
+        <dl>
+          <dt>Perfil</dt><dd>Rectora de una institución rural con sedes dispersas.</dd>
+          <dt>Necesita</dt><dd>Formación docente de bajo costo que se pueda incluir en la jornada pedagógica institucional.</dd>
+          <dt>Frustraciones</dt><dd>Poco presupuesto para dotación y rotación alta de docentes.</dd>
+          <dt>Qué le damos</dt><dd>Agenda de 6 horas lista, kit abierto y cuatro indicadores para seguir el proceso.</dd>
+        </dl>
+      </article>
+      <article class="box persona">
+        <div class="who"><div class="avatar" aria-hidden="true">SE</div><div><h4>Secretaría de Educación</h4><span class="label">Receptora · decisora de política</span></div></div>
+        <dl>
+          <dt>Perfil</dt><dd>Profesional de calidad educativa del municipio o del departamento.</dd>
+          <dt>Necesita</dt><dd>Evidencia de pertinencia e impacto para incluir la experiencia en el Plan Territorial de Formación Docente.</dd>
+          <dt>Frustraciones</dt><dd>Experiencias valiosas que se pierden cuando cambian las personas.</dd>
+          <dt>Qué le damos</dt><dd>Dossier de una página, indicadores de apropiación y modelo de alianza.</dd>
+        </dl>
+      </article>
+      <article class="box persona">
+        <div class="who"><div class="avatar" aria-hidden="true">MR</div><div><h4>Mesa de otro municipio</h4><span class="label">Receptora · replicadora</span></div></div>
+        <dl>
+          <dt>Perfil</dt><dd>Docentes de educación física de otro municipio del Oriente antioqueño que quieren organizar su propia mesa.</dd>
+          <dt>Necesita</dt><dd>Un modelo probado para formar a sus colegas y archivos que puedan adaptar.</dd>
+          <dt>Frustraciones</dt><dd>Empezar desde cero y no tener cómo documentar lo que hacen.</dd>
+          <dt>Qué le damos</dt><dd>Repositorio abierto que pueden copiar y adaptar, con licencia CC BY-NC-SA.</dd>
+        </dl>
+      </article>
+      <article class="box persona soft">
+        <div class="who"><div class="avatar" aria-hidden="true">NN</div><div><h4>Niñas y niños</h4><span class="label">Beneficiarios finales</span></div></div>
+        <dl>
+          <dt>Perfil</dt><dd>Estudiantes de primaria de 6 a 11 años, en su mayoría rurales.</dd>
+          <dt>Necesitan</dt><dd>Clases de educación física frecuentes, variadas y bien orientadas.</dd>
+          <dt>Cómo los alcanzamos</dt><dd>A través del docente. No son usuarios directos del ecosistema y no se recogen sus datos.</dd>
+        </dl>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="s" id="eje2">
+  <div class="s-head">
+    <span class="eje"><span class="chip">Eje 2</span><span class="label">Estrategia de empaquetamiento y transducción</span></span>
+    <h2>Del plan de 96 páginas a la ficha de un minuto</h2>
+  </div>
+
+  <div class="sub">
+    <h3>Traducción del lenguaje</h3>
+    <p class="prose">El plan de área está escrito para especialistas: habla de capacidades perceptivo-motrices, enfoque biopsicosocial y aprendizaje significativo. El docente de aula necesita saber qué hacer el lunes con 25 niños y un balón. La estrategia traduce en <strong>tres niveles de profundidad</strong> y conserva el rigor porque cada ficha cita el eje del plan y el estándar de Antioquia al que responde.</p>
+    <div class="grid3">
+      <div class="box"><span class="chip g">1 minuto</span><h4>Ficha de juego</h4><p>Nombre, edad, espacio, material, cómo se juega en 3 pasos, una variante y qué observar. Se acompaña de un video corto.</p></div>
+      <div class="box"><span class="chip g">10 minutos</span><h4>Guía de clase</h4><p>La estructura de sesión de 4.° y 5.° de la Mesa: reflexión inicial, calentamiento, juego central, evaluación en saber, saber hacer y ser, y cierre.</p></div>
+      <div class="box"><span class="chip g">Consulta</span><h4>Plan de área</h4><p>El documento completo de 2011 se conserva como archivo histórico y referente técnico para quien quiera profundizar.</p></div>
+    </div>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>Término del plan</th><th>Cómo lo decimos al docente</th><th>Ejemplo de la cartilla</th></tr></thead>
+        <tbody>
+          <tr><td>Capacidades perceptivo-motrices</td><td>Juegos para conocer el cuerpo, el espacio y el tiempo</td><td>La sombra; Cada uno en su casa</td></tr>
+          <tr><td>Capacidades físico-motrices</td><td>Juegos para ser más rápidos, fuertes y resistentes</td><td>La cadena; Pepitas y pepotas; El reloj</td></tr>
+          <tr><td>Capacidades socio-motrices</td><td>Juegos para jugar con otros, cooperar y competir limpio</td><td>Los diez pases; La muralla</td></tr>
+          <tr><td>Diferenciación espacio-temporal</td><td>Calcular dónde y cuándo llegar</td><td>Pasar y recibir el balón</td></tr>
+          <tr><td>Fuerza de disputa uno contra uno</td><td>Juegos de empujar y halar por parejas, con reglas de cuidado</td><td>Pelea de gallos; La fila que se empuja</td></tr>
+          <tr><td>Evaluación por desempeños</td><td>Observar qué sabe, qué hace y cómo se comporta el niño</td><td>Rúbrica del Kit REA</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <ul class="clean prose">
+      <li><strong>Lenguaje llano y verbos de acción.</strong> "Formen dos filas", no "se organiza el grupo en formación bilineal".</li>
+      <li><strong>Pictograma de cancha</strong> en cada ficha, a la manera de los dibujos de la cartilla original.</li>
+      <li><strong>Glosario de diez términos</strong> enlazado desde las fichas.</li>
+      <li><strong>Validación con pares.</strong> Cada ficha la prueba un docente de aula antes de publicarse, y se anota quién la validó.</li>
+      <li><strong>Formato accesible.</strong> Contraste alto, letra grande, lectura en celular y versión imprimible en blanco y negro.</li>
+    </ul>
+  </div>
+
+  <div class="sub">
+    <h3>Modelo de transferencia</h3>
+    <p class="prose">Elegimos un modelo <strong>híbrido de kit metodológico abierto y formación entre pares</strong>, con una ruta hacia la adopción institucional y la política pública. No hay licenciamiento comercial: el conocimiento se transfiere como bien común.</p>
+    <div class="grid2">
+      <div class="box"><span class="label">Vía 1 · Kit metodológico (REA)</span><p>Repositorio público con fichas, plantillas, rúbricas, buscador de juegos, videoteca y archivo histórico, bajo licencia Creative Commons. Cualquiera puede descargarlo, adaptarlo y devolver mejoras.</p></div>
+      <div class="box"><span class="label">Vía 2 · Formación entre pares</span><p>Réplica de la jornada de 6 horas del 29 de octubre de 2012, dirigida por docentes de educación física para maestros de primaria, seguida de 8 semanas de acompañamiento virtual por WhatsApp.</p></div>
+      <div class="box"><span class="label">Vía 3 · Adopción institucional</span><p>Las instituciones incluyen el kit en su plan de área y en la jornada pedagógica. La plantilla de sesión se vuelve el formato común de planeación en primaria.</p></div>
+      <div class="box"><span class="label">Vía 4 · Incidencia en política</span><p>Presentar la experiencia a la Secretaría de Educación para incluirla en el Plan Territorial de Formación Docente y reactivar la Mesa de Educación Física como instancia municipal.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="s" id="eje3">
+  <div class="s-head">
+    <span class="eje"><span class="chip">Eje 3</span><span class="label">Plan de medios y artefactos digitales</span></span>
+    <h2>Formatos pensados para la escuela rural</h2>
+  </div>
+  <p class="prose">Cada formato se eligió pensando en las condiciones de Luz Marina: celular antes que computador, datos móviles limitados, poco tiempo de preparación y la necesidad de tener el material en papel en la cancha. En 2012 el paquete se entregó en DVD; hoy lo movemos a un repositorio abierto que funciona en el celular y se puede imprimir.</p>
+  <div class="tbl">
+    <table>
+      <thead><tr><th>Artefacto</th><th>Herramienta</th><th>Para quién</th><th>Por qué este formato</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Hub del ecosistema</strong> (este dossier)</td><td>GitHub Pages · repositorio <em>jgomez-lgtm</em></td><td>Todas las personas</td><td>Es gratuito, permanente y público. Tiene historial de versiones y permite que otros copien el kit y propongan cambios. La página es ligera y se lee en el celular.</td></tr>
+        <tr><td><strong>Buscador de juegos</strong></td><td>Página interactiva en HTML</td><td>Luz Marina, Andrés</td><td>Filtra los 44 juegos por edad y capacidad en segundos y funciona sin conexión una vez cargado.</td></tr>
+        <tr><td><strong>Fichas de juego</strong></td><td>Markdown en GitHub y versión imprimible</td><td>Docentes de aula</td><td>Caben en una hoja, se imprimen en blanco y negro y se pueden plastificar para la cancha.</td></tr>
+        <tr><td><strong>Videoteca curada</strong></td><td>Enlaces a YouTube y TikTok</td><td>Docentes de aula</td><td>Un minuto de video muestra la dinámica mejor que una página. Enlazamos videos existentes y acreditamos a sus autores, sin descargarlos ni volverlos a subir.</td></tr>
+        <tr><td><strong>Plantilla de sesión y rúbrica</strong></td><td>Documento editable</td><td>Docentes, directivos</td><td>Retoma el formato de 4.° y 5.° de la Mesa (2013) y unifica la planeación y la evaluación.</td></tr>
+        <tr><td><strong>Archivo histórico 2012</strong></td><td>Carpeta del repositorio</td><td>Andrés, Mesa replicadora, Secretaría</td><td>Conserva el plan de área, la cartilla y el registro de la experiencia original, con la atribución a sus autores.</td></tr>
+        <tr><td><strong>Formulario de implementación</strong></td><td>Google Forms, 2 minutos</td><td>Docentes y equipo gestor</td><td>Es la fuente de los indicadores del Eje 4. Pregunta qué juego se usó, con qué grado y cómo resultó, sin datos de estudiantes.</td></tr>
+        <tr><td><strong>Comunidad de práctica</strong></td><td>Grupo de WhatsApp</td><td>Docentes formados</td><td>Es el canal que ya usan los maestros rurales. Allí se hace el acompañamiento de 8 semanas y se comparten variantes.</td></tr>
+        <tr><td><strong>Afiche con código QR</strong></td><td>Impreso</td><td>Sedes rurales</td><td>Lleva del mural de la escuela al buscador y a la videoteca.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sub">
+    <h3>Viaje del usuario · Luz Marina</h3>
+    <p class="prose">El recorrido que hace una docente de aula desde que conoce el kit hasta que lo adapta y lo comparte. La barra indica su nivel de confianza en cada etapa.</p>
+    <div class="jwrap">
+      <div class="journey">
+        <div class="stage"><span class="n">1</span><h4>Descubre</h4><div class="row"><span class="label">Punto de contacto</span>Jornada de 6 h, afiche QR o grupo de WhatsApp</div><div class="row"><span class="label">Piensa</span>"Otra capacitación más…"</div><div class="row"><span class="label">Diseño</span>La jornada es vivencial: ella juega primero</div><div class="mood"><span style="width:35%"></span></div></div>
+        <div class="stage"><span class="n">2</span><h4>Explora</h4><div class="row"><span class="label">Punto de contacto</span>Hub en el celular</div><div class="row"><span class="label">Piensa</span>"¿Qué sirve para mis niños de 7 años?"</div><div class="row"><span class="label">Diseño</span>Buscador por edad y resumen de 30 s</div><div class="mood"><span style="width:50%"></span></div></div>
+        <div class="stage"><span class="n">3</span><h4>Elige</h4><div class="row"><span class="label">Punto de contacto</span>Ficha y video de un minuto</div><div class="row"><span class="label">Piensa</span>"Esto lo puedo hacer con un balón"</div><div class="row"><span class="label">Diseño</span>El material y el espacio aparecen primero</div><div class="mood"><span style="width:62%"></span></div></div>
+        <div class="stage"><span class="n">4</span><h4>Aplica</h4><div class="row"><span class="label">Punto de contacto</span>Ficha impresa y plantilla de sesión</div><div class="row"><span class="label">Piensa</span>"¿Y si llueve o somos pocos?"</div><div class="row"><span class="label">Diseño</span>Variantes y adaptación multigrado</div><div class="mood"><span style="width:58%"></span></div></div>
+        <div class="stage"><span class="n">5</span><h4>Evalúa</h4><div class="row"><span class="label">Punto de contacto</span>Rúbrica de saber, saber hacer y ser</div><div class="row"><span class="label">Piensa</span>"Ya sé qué observar"</div><div class="row"><span class="label">Diseño</span>Tres criterios con cuatro niveles</div><div class="mood"><span style="width:75%"></span></div></div>
+        <div class="stage"><span class="n">6</span><h4>Reporta</h4><div class="row"><span class="label">Punto de contacto</span>Formulario de 2 minutos</div><div class="row"><span class="label">Piensa</span>"¿Para qué sirve esto?"</div><div class="row"><span class="label">Diseño</span>Recibe un resumen mensual del grupo</div><div class="mood"><span style="width:70%"></span></div></div>
+        <div class="stage"><span class="n">7</span><h4>Adapta y comparte</h4><div class="row"><span class="label">Punto de contacto</span>WhatsApp y repositorio</div><div class="row"><span class="label">Piensa</span>"Inventé una variante"</div><div class="row"><span class="label">Diseño</span>Su variante se publica con su nombre</div><div class="mood"><span style="width:90%"></span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="s" id="eje4">
+  <div class="s-head">
+    <span class="eje"><span class="chip">Eje 4</span><span class="label">Indicadores de apropiación y transferencia</span></span>
+    <h2>Medimos el uso en el aula, no las vistas</h2>
+  </div>
+  <p class="prose">Los indicadores siguen la escalera de apropiación: el docente <em>conoce</em>, luego <em>prueba</em>, <em>integra</em> el kit en su planeación y finalmente lo <em>adapta y comparte</em>. Las metas cubren el primer año de reactivación y parten de cero, porque no hay línea base de 2012. La línea base de la cobertura es el total de sedes oficiales del municipio.</p>
+  <div class="tbl">
+    <table>
+      <thead><tr><th>Indicador</th><th>Cómo se calcula</th><th>Fuente</th><th>Frecuencia</th><th>Meta año 1</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Tasa de adopción</strong></td><td>Docentes formados que aplican 4 o más juegos en 8 semanas ÷ docentes formados</td><td>Formulario de implementación</td><td>Semana 8</td><td class="num">≥ 60 %</td></tr>
+        <tr><td><strong>Nivel de implementación</strong></td><td>Porcentaje de docentes en nivel 2 o 3 de la escala: 0 conoce · 1 prueba · 2 integra en su planeación · 3 adapta y comparte</td><td>Formulario y visita de acompañamiento</td><td>Trimestral</td><td class="num">≥ 40 % en nivel 2 o más</td></tr>
+        <tr><td><strong>Cobertura territorial</strong></td><td>Sedes con al menos un docente que implementa ÷ sedes oficiales del municipio (≈40)</td><td>Formulario</td><td>Semestral</td><td class="num">≥ 50 %</td></tr>
+        <tr><td><strong>Sesiones planeadas con la plantilla</strong></td><td>Número de planeaciones reportadas por docente al mes</td><td>Formulario y grupo de WhatsApp</td><td>Mensual</td><td class="num">≥ 2 por docente</td></tr>
+        <tr><td><strong>Aporte de variantes</strong></td><td>Variantes o fichas nuevas creadas por docentes y aceptadas en el repositorio</td><td>GitHub y formulario</td><td>Semestral</td><td class="num">≥ 15</td></tr>
+        <tr><td><strong>Adopción institucional</strong></td><td>Instituciones educativas que incluyen el kit en su plan de área o en la jornada pedagógica</td><td>Acta o plan de área</td><td>Anual</td><td class="num">≥ 3 de 6 IE</td></tr>
+        <tr><td><strong>Alianzas logradas</strong></td><td>Acuerdos formales con la Secretaría de Educación, el ente deportivo municipal o una universidad</td><td>Carta o convenio</td><td>Anual</td><td class="num">≥ 2</td></tr>
+        <tr><td><strong>Avance en el aprendizaje</strong></td><td>Porcentaje de estudiantes de grupos piloto que suben al menos un nivel en la rúbrica de desempeño motriz (evaluación antes y después)</td><td>Rúbrica del Kit REA</td><td>Inicio y cierre del semestre</td><td class="num">≥ 50 %</td></tr>
+        <tr><td><strong>Réplica externa</strong></td><td>Mesas o instituciones de otros municipios que repiten la jornada con el kit</td><td>Reporte del replicador</td><td>Anual</td><td class="num">≥ 1</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note">Las descargas y visitas se registran solo como dato de contexto. Una descarga no demuestra que un juego llegó a la cancha, así que no se usa para decidir si la transferencia funcionó.</p>
+</section>
+
+<section class="s" id="eje5">
+  <div class="s-head">
+    <span class="eje"><span class="chip">Eje 5</span><span class="label">Consideraciones éticas, legales y de propiedad intelectual</span></span>
+    <h2>Abierto, con autoría y con cuidado</h2>
+  </div>
+  <div class="sub">
+    <h3>Licenciamiento digital</h3>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>Componente</th><th>Licencia</th><th>Razón</th></tr></thead>
+        <tbody>
+          <tr><td>Contenidos nuevos: guía, fichas reescritas, plantilla, rúbrica y dossier</td><td><strong>CC BY-NC-SA 4.0</strong></td><td>Permite copiar y adaptar citando la autoría y compartiendo en las mismas condiciones. Impide que el material comunitario se venda. Los integrantes de la Mesa dieron su aval como coautores.</td></tr>
+          <tr><td>Plan Municipal de Área de Educación Física (2011)</td><td><strong>CC BY-NC-SA 4.0</strong>, con el aval de la Mesa</td><td>Es un documento de autoría colectiva de la Mesa. Se publica sin modificar, como archivo histórico.</td></tr>
+          <tr><td>Cartilla "A jugar se dijo" (2012)</td><td>Archivo histórico con atribución</td><td>La cartilla es una compilación: su propia cibergrafía cita un sitio web externo como fuente de los juegos. Se conserva como documento histórico citando esa fuente, y las fichas nuevas se redactan con palabras propias.</td></tr>
+          <tr><td>Estándares básicos de competencia de Antioquia (Gobernación de Antioquia, U. de A.)</td><td>Reserva de derechos del autor</td><td>No se vuelve a publicar. Se cita y se remite a la fuente oficial.</td></tr>
+          <tr><td>Videos de YouTube y TikTok</td><td>Derechos de sus autores</td><td>Solo se enlazan y se acredita el canal. No se descargan ni se suben de nuevo.</td></tr>
+          <tr><td>Código de la página</td><td>MIT</td><td>Permite reutilizar la plantilla técnica del hub sin restricciones.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="box">
+      <h4>Gestión de datos</h4>
+      <ul class="clean">
+        <li>Se aplican la Ley 1581 de 2012 de protección de datos personales y su decreto reglamentario 1377 de 2013.</li>
+        <li><strong>Datos mínimos:</strong> el formulario pide institución, sede, grado, juego aplicado y una observación. No pide nombres, documentos ni fotos de estudiantes.</li>
+        <li>Consentimiento informado de los docentes al inscribirse, con la finalidad explicada en una línea.</li>
+        <li>Los datos se publican solo agregados por institución, nunca por persona.</li>
+        <li>Los datos de contacto de los integrantes de la Mesa que aparecen en actas y protocolos antiguos se retiran antes de publicar.</li>
+      </ul>
+    </div>
+    <div class="box">
+      <h4>Participantes y colaboradores</h4>
+      <ul class="clean">
+        <li>Los integrantes de la Mesa aparecen como coautores, con su aval.</li>
+        <li>Sin fotos de niños sin la autorización escrita de sus acudientes, como exige el Código de la Infancia y la Adolescencia (Ley 1098 de 2006). Por ahora el ecosistema no incluye fotografías.</li>
+        <li>Las variantes que aporten los docentes se publican con su nombre si lo autorizan, bajo la misma licencia.</li>
+        <li>Seguridad en los juegos de contacto: las fichas de fuerza y disputa incluyen reglas de cuidado y adaptaciones para niños con discapacidad.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="s" id="guia">
+  <div class="s-head">
+    <span class="eje"><span class="chip g">Opción A · 1</span><span class="label">Guía de transferencia pedagógica</span></span>
+    <h2>Cómo replicar la experiencia</h2>
+  </div>
+  <p class="note">La agenda de 2012 no quedó documentada en detalle. Esta guía reconstruye la jornada a partir de los materiales del paquete, del formato de sesión de 2013 y de los pactos de reunión del protocolo de la Mesa de 2014.</p>
+
+  <div class="sub">
+    <h3>Para quien organiza la jornada</h3>
+    <div class="grid3">
+      <div class="box"><span class="label">Antes · 4 semanas</span>
+        <ul class="clean">
+          <li>Conformar o reactivar la mesa de área con 3 a 6 docentes de educación física o monitores.</li>
+          <li>Hacer un diagnóstico corto: cuántos docentes de primaria hay, qué espacios y materiales tienen y qué les preocupa.</li>
+          <li>Pedir a la Secretaría de Educación o a la rectoría la jornada de 6 horas dentro del calendario institucional.</li>
+          <li>Probar la agenda y los juegos entre los formadores.</li>
+          <li>Compartir el enlace del kit y el grupo de WhatsApp.</li>
+        </ul>
+      </div>
+      <div class="box"><span class="label">Durante · 6 horas</span>
+        <div class="tbl" style="border:none">
+          <table style="min-width:0">
+            <tbody>
+              <tr><td class="num">0:00</td><td>Bienvenida y pactos: puntualidad, presencia plena, participación, un moderador que cuida el tiempo</td></tr>
+              <tr><td class="num">0:30</td><td>El plan de área en 30 minutos: 4 ejes y qué significan en la clase</td></tr>
+              <tr><td class="num">1:00</td><td>Taller vivencial en estaciones: los docentes juegan 12 juegos de la cartilla, uno por capacidad</td></tr>
+              <tr><td class="num">3:30</td><td>Descanso</td></tr>
+              <tr><td class="num">3:45</td><td>Planeación en parejas de una sesión real con la plantilla</td></tr>
+              <tr><td class="num">4:45</td><td>Cómo evaluar con la rúbrica de saber, saber hacer y ser</td></tr>
+              <tr><td class="num">5:15</td><td>Adaptación a multigrado, lluvia y poco material</td></tr>
+              <tr><td class="num">5:40</td><td>Compromisos, entrega del kit y formulario de entrada</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="box"><span class="label">Después · 8 semanas</span>
+        <ul class="clean">
+          <li>Un reto semanal en el grupo: aplicar un juego y contar cómo salió.</li>
+          <li>Una visita de acompañamiento o videollamada por institución.</li>
+          <li>Formulario en la semana 8 para los indicadores de adopción.</li>
+          <li>Un encuentro de socialización donde los docentes presentan sus variantes. El Día del Movimiento es una buena vitrina.</li>
+          <li>Publicar las variantes en el repositorio.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="sub">
+    <h3>Para el docente en su clase · 8 pasos</h3>
+    <p class="prose">Se basa en la sesión de clase de 4.° y 5.° que planeó la Mesa en 2013, cuyo estándar era fortalecer las habilidades motrices básicas y sus combinaciones para integrarse con los compañeros.</p>
+    <div class="grid2">
+      <ol class="clean box">
+        <li><strong>Elige el juego</strong> en el buscador según la edad del grupo y la capacidad que quieres trabajar.</li>
+        <li><strong>Prepara el espacio</strong>: demarca con conos, piedras o tiza y revisa que no haya peligros.</li>
+        <li><strong>Reflexión inicial</strong> de 3 minutos sobre un valor, por ejemplo el trabajo en equipo.</li>
+        <li><strong>Calentamiento</strong> enfocado en la habilidad del día.</li>
+      </ol>
+      <ol class="clean box" start="5">
+        <li><strong>Juego central</strong>: explica en 3 pasos, juega, detén el juego, corrige e introduce una variante.</li>
+        <li><strong>Adapta</strong> para multigrado con roles distintos por edad y tamaños de campo distintos.</li>
+        <li><strong>Evalúa</strong> con la rúbrica: qué sabe (concepto), qué hace (ejecución) y cómo se comporta (actitud).</li>
+        <li><strong>Cierre reflexivo</strong> sobre saber ganar y saber perder, y registra la sesión en el formulario.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="s" id="impacto">
+  <div class="s-head">
+    <span class="eje"><span class="chip g">Opción A · 2</span><span class="label">Evaluación de impacto en el aprendizaje</span></span>
+    <h2>Lo que sabemos y lo que falta medir</h2>
+  </div>
+  <p class="note"><strong>Sobre la evidencia:</strong> de la jornada de 2012 no quedaron listas de asistencia, evaluaciones ni datos de uso posterior. Lo que sigue es evidencia documental y cualitativa, tomada del correo de la Mesa. No presentamos cifras de aprendizaje porque no existen.</p>
+  <div class="grid2">
+    <div class="box">
+      <h4>Evidencia disponible</h4>
+      <ul class="clean">
+        <li><strong>Diagnóstico de partida</strong> documentado en el Plan de Área de 2011: desarrollo motriz insuficiente y pocos licenciados en el área.</li>
+        <li><strong>Productos consolidados:</strong> un plan municipal de 96 páginas con contenidos de preescolar a 11.°, una cartilla de 44 juegos y el referente departamental, entregados en DVD a los docentes de primaria.</li>
+        <li><strong>Reconocimiento institucional:</strong> el plan señala que la Mesa está avalada por las Secretarías de Educación municipal y departamental.</li>
+        <li><strong>Continuidad en 2013:</strong> los integrantes elaboran sesiones de clase de 4.° y 5.° con estándar, competencias y evaluación en saber, saber hacer y ser, además de las mallas de 8.° y 9.°.</li>
+        <li><strong>Continuidad en 2014:</strong> la Secretaría de Educación recibe bien la propuesta de un día de juegos lúdicos para docentes, el plan de acción anual se revisa y se propone un festival municipal de miniatletismo.</li>
+        <li><strong>Vitrina pública:</strong> las instituciones registran el Día del Movimiento en 2012 y 2013.</li>
+      </ul>
+    </div>
+    <div class="box">
+      <h4>Cómo se medirá en la réplica</h4>
+      <ul class="clean">
+        <li><strong>Diseño:</strong> evaluación antes y después, sin grupo de control, en 2 a 4 grupos piloto de primaria durante un semestre.</li>
+        <li><strong>Aprendizaje:</strong> la rúbrica de desempeño motriz del Kit REA, aplicada en la semana 1 y en la semana 16 por el mismo docente.</li>
+        <li><strong>Práctica docente:</strong> la escala de implementación del Eje 4 y la observación de una clase con lista de chequeo.</li>
+        <li><strong>Voz de los actores:</strong> un grupo focal con docentes y una conversación corta con estudiantes sobre qué juegos recuerdan y por qué.</li>
+        <li><strong>Triangulación:</strong> se cruzan los formularios, las rúbricas y el grupo focal. Los resultados agregados se publican en el hub.</li>
+        <li>Opcional: entrevistas a integrantes de la Mesa y a docentes que asistieron en 2012 para reconstruir la memoria de la experiencia.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="s" id="kit">
+  <div class="s-head">
+    <span class="eje"><span class="chip g">Opción A · 3</span><span class="label">Kit de recursos educativos abiertos</span></span>
+    <h2>Listo para usar y adaptar</h2>
+  </div>
+
+  <div class="sub">
+    <h3>Buscador de los 44 juegos</h3>
+    <p class="prose">Los juegos están organizados según las capacidades de la cartilla de 2012, con la edad mínima que ella indica. Los que tienen video de referencia están marcados.</p>
+    <div class="finder-ctrl">
+      <label for="f-age">Edad de mi grupo
+        <select id="f-age">
+          <option value="99">Todas las edades</option>
+          <option value="6">6 años</option><option value="7">7 años</option><option value="8">8 años</option>
+          <option value="9" selected>9 años</option><option value="10">10 años</option><option value="11">11 años</option>
+          <option value="12">12 años o más</option>
+        </select>
+      </label>
+      <label for="f-cap">Capacidad
+        <select id="f-cap"><option value="">Todas</option></select>
+      </label>
+      <label for="f-q">Buscar
+        <input type="search" id="f-q" placeholder="Nombre del juego">
+      </label>
+      <button class="btn" type="button" id="f-reset">Ver todos</button>
+      <span class="count" id="f-count" aria-live="polite"></span>
+    </div>
+    <div class="games" id="games"></div>
+  </div>
+
+  <div class="sub">
+    <h3>Fichas de ejemplo</h3>
+    <p class="prose">Cinco juegos de la cartilla, redactados en el formato de ficha de un minuto.</p>
+    <details open>
+      <summary>La cadena · desde 8 años</summary>
+      <div class="in"><dl class="kv">
+        <dt>Capacidad</dt><dd>Velocidad y reacción · eje físico-motriz</dd>
+        <dt>Espacio y material</dt><dd>Zona delimitada con conos o tiza. No se necesita material.</dd>
+        <dt>Cómo se juega</dt><dd>1. Un niño persigue a los demás. 2. A quien toca, lo toma de la mano y persiguen juntos. 3. La cadena crece o se divide hasta atrapar a todos.</dd>
+        <dt>Reglas de cuidado</dt><dd>La captura no vale si la cadena se suelta. Quien sale de la zona pasa a la cadena.</dd>
+        <dt>Variante</dt><dd>Cadenas de máximo 4 niños que se dividen al llegar a ese número.</dd>
+        <dt>Qué observar</dt><dd>Cambios de dirección, reacción al estímulo y coordinación con el compañero.</dd>
+        <dt>Video</dt><dd><a href="https://www.youtube.com/watch?v=jgtTUag_HKs" target="_blank" rel="noopener">La cadena cortada · Educación Física Para Todos</a></dd>
+      </dl></div>
+    </details>
+    <details>
+      <summary>Pepitas y pepotas · desde 6–7 años</summary>
+      <div class="in"><dl class="kv">
+        <dt>Capacidad</dt><dd>Velocidad de reacción auditiva · eje físico-motriz</dd>
+        <dt>Espacio y material</dt><dd>Dos líneas paralelas separadas de 2 a 3 m y dos líneas de fondo.</dd>
+        <dt>Cómo se juega</dt><dd>1. Dos equipos se paran en las líneas: uno es "pepitas" y el otro "pepotas". 2. El docente nombra un equipo. 3. Ese equipo corre a su línea de fondo y el otro intenta tocarlo antes de que llegue.</dd>
+        <dt>Reglas</dt><dd>Se corre en línea recta. Cada niño tocado es un punto para el otro equipo.</dd>
+        <dt>Variante</dt><dd>Salir sentados, acostados o de espaldas.</dd>
+        <dt>Qué observar</dt><dd>Tiempo de reacción, atención y arranque.</dd>
+      </dl></div>
+    </details>
+    <details>
+      <summary>Pelea de gallos · desde 9–10 años</summary>
+      <div class="in"><dl class="kv">
+        <dt>Capacidad</dt><dd>Fuerza de disputa uno contra uno · ejes físico-motriz y socio-motriz</dd>
+        <dt>Espacio y material</dt><dd>Círculos marcados en el suelo, uno por pareja.</dd>
+        <dt>Cómo se juega</dt><dd>1. Parejas en cuclillas dentro del círculo. 2. Empujan solo con las palmas de las manos. 3. Pierde quien pierde el equilibrio o sale del círculo.</dd>
+        <dt>Reglas de cuidado</dt><dd>Prohibido agarrar la ropa. Parejas de talla similar. Si nadie gana en 30 segundos es empate.</dd>
+        <dt>Variante</dt><dd>En un pie, con los brazos cruzados, empujando solo con el hombro.</dd>
+        <dt>Qué observar</dt><dd>Equilibrio, control de la fuerza y respeto por el compañero.</dd>
+        <dt>Video</dt><dd><a href="https://www.youtube.com/watch?v=MKHHF1UZpH0" target="_blank" rel="noopener">Pelea de gallos · ACENTO Escuela de Animadores</a></dd>
+      </dl></div>
+    </details>
+    <details>
+      <summary>La muralla · desde 6–7 años</summary>
+      <div class="in"><dl class="kv">
+        <dt>Capacidad</dt><dd>Equilibrio, agilidad y cooperación · ejes perceptivo-motriz y socio-motriz</dd>
+        <dt>Espacio y material</dt><dd>Un pasillo central de 3 a 5 m de ancho que cruza la cancha.</dd>
+        <dt>Cómo se juega</dt><dd>1. Un guardián se ubica en el pasillo. 2. A la señal, todos cruzan al otro lado. 3. Los atrapados se toman de las manos con el guardián y forman una muralla que crece.</dd>
+        <dt>Reglas</dt><dd>La muralla solo atrapa si sigue unida. El guardián no sale del pasillo.</dd>
+        <dt>Variante</dt><dd>Cruzar en cuadrupedia o saltando en un pie.</dd>
+        <dt>Qué observar</dt><dd>Fintas, cambios de ritmo y trabajo coordinado de la muralla.</dd>
+        <dt>Video</dt><dd><a href="https://www.youtube.com/watch?v=vOw46_IpPGc" target="_blank" rel="noopener">La muralla · Mi Educación Física</a></dd>
+      </dl></div>
+    </details>
+    <details>
+      <summary>Los diez pases · desde 9 años</summary>
+      <div class="in"><dl class="kv">
+        <dt>Capacidad</dt><dd>Pases y juego colectivo · eje socio-motriz</dd>
+        <dt>Espacio y material</dt><dd>Media cancha y un balón.</dd>
+        <dt>Cómo se juega</dt><dd>1. Dos equipos. 2. El que tiene el balón busca hacer 10 pases seguidos sin que caiga ni lo intercepten. 3. Cada serie de 10 pases vale un punto y gana quien llega primero a 5.</dd>
+        <dt>Reglas</dt><dd>No se quita el balón de las manos. Si cae al suelo, el balón pasa al otro equipo.</dd>
+        <dt>Variante</dt><dd>Empezar con las manos y luego jugar con los pies.</dd>
+        <dt>Qué observar</dt><dd>Desmarque, comunicación y participación de todos.</dd>
+        <dt>Video</dt><dd><a href="https://www.youtube.com/watch?v=Ta7YAQb7ElY" target="_blank" rel="noopener">Juego de los 10 pases · Alejandro Labad</a></dd>
+      </dl></div>
+    </details>
+  </div>
+
+  <div class="grid2">
+    <div class="sub">
+      <h3>Plantilla de sesión</h3>
+      <div class="tbl">
+        <table style="min-width:0">
+          <tbody>
+            <tr><th>Grado y fecha</th><td>____ · ____ · Sesión n.° ___</td></tr>
+            <tr><th>Estándar</th><td>Ejemplo de 4.° y 5.°: fortalezco mis habilidades motrices básicas y sus combinaciones para integrarme con mis compañeros.</td></tr>
+            <tr><th>Competencias</th><td>Físico-motriz · Socio-motriz · Perceptivo-motriz</td></tr>
+            <tr><th>Aspecto educativo</th><td>Reflexión inicial sobre un valor</td></tr>
+            <tr><th>Calentamiento</th><td>Enfocado en la habilidad del día</td></tr>
+            <tr><th>Juego central y variantes</th><td>Juego n.° __ del buscador + variantes</td></tr>
+            <tr><th>Evaluación</th><td>Saber · Saber hacer · Ser</td></tr>
+            <tr><th>Cierre</th><td>Reflexión: saber ganar y saber perder</td></tr>
+            <tr><th>Observaciones</th><td>Qué funcionó y qué cambiaría</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="sub">
+      <h3>Rúbrica de desempeño</h3>
+      <div class="tbl">
+        <table>
+          <thead><tr><th>Criterio</th><th>1 · Inicial</th><th>2 · En proceso</th><th>3 · Logrado</th><th>4 · Destacado</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Saber</strong></td><td>No nombra la habilidad trabajada</td><td>La nombra con ayuda</td><td>Explica para qué sirve</td><td>La relaciona con otros juegos o con su vida diaria</td></tr>
+            <tr><td><strong>Saber hacer</strong></td><td>Ejecuta con dificultad y necesita apoyo</td><td>Ejecuta a veces con control</td><td>Ejecuta con control y ajusta a la situación</td><td>Crea variantes y ayuda a otros</td></tr>
+            <tr><td><strong>Ser</strong></td><td>Le cuesta respetar las reglas y a los compañeros</td><td>Respeta las reglas cuando se le recuerda</td><td>Coopera y acepta el resultado</td><td>Lidera, incluye a otros y juega limpio</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="s" id="videos">
+  <div class="s-head">
+    <span class="eje"><span class="chip o">Recursos · 1</span><span class="label">Videoteca curada</span></span>
+    <h2>Un minuto para ver cómo se juega</h2>
+  </div>
+  <p class="prose">Videos cortos de terceros que muestran juegos de la cartilla o variantes cercanas. Se enlazan con crédito a sus autores y se abren en YouTube o TikTok.</p>
+  <div class="grid3">
+    <div class="box vid"><span class="chip">Velocidad · n.° 1</span><h4>La cadena cortada</h4><span class="src">YouTube · Educación Física Para Todos</span><a href="https://www.youtube.com/watch?v=jgtTUag_HKs" target="_blank" rel="noopener">Ver video</a></div>
+    <div class="box vid"><span class="chip">Fuerza · n.° 6</span><h4>Fútbol cangrejo</h4><span class="src">YouTube · JuegosEF</span><a href="https://www.youtube.com/watch?v=7-ZzMAI_v64" target="_blank" rel="noopener">Ver video</a></div>
+    <div class="box vid"><span class="chip">Fuerza · n.° 6</span><h4>Fútbol cangrejo en clase</h4><span class="src">TikTok · @konibarrera</span><a href="https://www.tiktok.com/@konibarrera/video/7327820580667854085" target="_blank" rel="noopener">Ver video</a></div>
+    <div class="box vid"><span class="chip">Disputa · n.° 10</span><h4>Pelea de gallos</h4><span class="src">YouTube · ACENTO Escuela de Animadores</span><a href="https://www.youtube.com/watch?v=MKHHF1UZpH0" target="_blank" rel="noopener">Ver video</a></div>
+    <div class="box vid"><span class="chip">Disputa · n.° 10</span><h4>Pelea de gallos (versión corta)</h4><span class="src">TikTok · @acentoescuelaanimadores</span><a href="https://www.tiktok.com/@acentoescuelaanimadores/video/7293557668172549408" target="_blank" rel="noopener">Ver video</a></div>
+    <div class="box vid"><span class="chip">Pases · n.° 21</span><h4>Juego de los 10 pases</h4><span class="src">YouTube · Alejandro Labad</span><a href="https://www.youtube.com/watch?v=Ta7YAQb7ElY" target="_blank" rel="noopener">Ver video</a></div>
+    <div class="box vid"><span class="chip">Equilibrio · n.° 22</span><h4>La muralla</h4><span class="src">YouTube · Mi Educación Física</span><a href="https://www.youtube.com/watch?v=vOw46_IpPGc" target="_blank" rel="noopener">Ver video</a></div>
+    <div class="box vid"><span class="chip">Equilibrio · n.° 22</span><h4>La muralla china (variante)</h4><span class="src">YouTube · colección Juegos Motores</span><a href="https://www.youtube.com/watch?v=EukiBlTOL_o" target="_blank" rel="noopener">Ver video</a></div>
+    <div class="box vid soft"><span class="chip o">Aporta</span><h4>¿Grabaste tu versión?</h4><p style="font-size:.92rem">Los docentes pueden proponer videos propios sin rostros de niños o con la autorización de los acudientes. La Mesa los revisa antes de publicarlos.</p></div>
+  </div>
+</section>
+
+<section class="s" id="archivo">
+  <div class="s-head">
+    <span class="eje"><span class="chip o">Recursos · 2</span><span class="label">Archivo histórico · documentos conservados</span></span>
+    <h2>El paquete de memorias de 2012</h2>
+  </div>
+  <div class="grid3">
+    <div class="box"><span class="label">Documento 1 · .docx · 15 págs.</span><h4>Cartilla "A jugar se dijo"</h4><p style="font-size:.93rem">Juegos didácticos para la clase de educación física en la básica primaria. Firmada por las IE San Vicente Ferrer, Santa Rita, Corrientes, Chaparral y La Magdalena. 44 juegos en 16 bloques de capacidades, cada uno con descripción, reglas, variantes, edad y dibujo de la cancha.</p></div>
+    <div class="box"><span class="label">Documento 2 · .doc · 96 págs.</span><h4>Plan Municipal de Área de Educación Física</h4><p style="font-size:.93rem">Mesa Pedagógica, 2011. Incluye diagnóstico, justificación, propósitos, marco legal, 4 ejes de formación, contenidos de preescolar a 11.°, estrategias metodológicas (aprendizaje significativo y cooperativo) y evaluación cualitativa.</p></div>
+    <div class="box"><span class="label">Documento 3 · .pdf · 66 págs.</span><h4>Estándares básicos de competencia de Antioquia</h4><p style="font-size:.93rem">Gobernación de Antioquia, Secretaría de Educación para la Cultura, con autoría de profesores de la Universidad de Antioquia. Es un referente externo: se cita y no se vuelve a publicar.</p></div>
+  </div>
+  <div class="sub">
+    <h3>Línea de tiempo</h3>
+    <div class="tl">
+      <div><time>Ago–sep 2011</time><p>Los integrantes de la Mesa comparten juegos ("Juegos múltiples", "El rey o la reina") y material sobre actividad física y salud.</p></div>
+      <div><time>2011</time><p>Se construye el Plan Municipal de Área de Educación Física.</p></div>
+      <div><time>Abr 2012</time><p>Evidencias del Día del Movimiento en las instituciones del municipio.</p></div>
+      <div><time>9 oct 2012</time><p>Circula el plan de área con desempeños.</p></div>
+      <div><time>14–24 oct 2012</time><p>Se ajusta la cartilla de juegos para la capacitación.</p></div>
+      <div><time>23 oct 2012</time><p>Se pide organizar el paquete y grabarlo en DVD.</p></div>
+      <div><time>29 oct 2012</time><p><strong>Capacitación de 6 horas para todos los docentes de primaria del municipio.</strong></p></div>
+      <div><time>2013</time><p>Planeación de sesiones de clase de 4.° y 5.° y mallas de 8.° y 9.°.</p></div>
+      <div><time>May 2014</time><p>Protocolo de la Mesa: jornada lúdica para docentes, plan de acción y propuesta de festival de miniatletismo.</p></div>
+      <div><time>2026</time><p>La experiencia se reempaqueta como ecosistema digital de transferencia.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="s" id="creditos">
+  <div class="s-head">
+    <span class="eje"><span class="chip o">Recursos · 3</span><span class="label">Créditos y autoría</span></span>
+    <h2>Quiénes lo hicieron</h2>
+  </div>
+  <div class="grid2">
+    <div class="box">
+      <h4>Mesa Pedagógica de Educación Física de San Vicente Ferrer</h4>
+      <p style="font-size:.95rem">Autores de la experiencia original, con su aval para publicar: Carlos Mario Pérez Cadavid, Julián Darío Gómez Zapata, Teresita Cardona Quintero, Margarita María Serna Torres, Álvaro de Jesús Marín Marín, José Alcides Marín y Héctor Hernán Hoyos Henao, junto con los demás docentes y monitores que participaron.</p>
+    </div>
+    <div class="box">
+      <h4>Equipo de la propuesta de transferencia</h4>
+      <p style="font-size:.95rem">Julián Darío Gómez Zapata, David José Peñaranda Forero y Edwin Tello Chaverra. Maestría en Pedagogía Digital, curso de Gestión y Transferencia del Conocimiento.</p>
+    </div>
+  </div>
+  <p class="note">* Fuente del número de sedes: documento de contexto educativo del municipio de San Vicente Ferrer (renovacion-educativa.webnode.com.co), que reporta 1 institución urbana, 5 instituciones rurales y 34 Centros Educativos Rurales, sin indicar el año. Se usa como orden de magnitud y debe confirmarse con la Secretaría de Educación.</p>
+</section>
+
+<footer>
+  <div class="cc"><span class="chip g">CC BY-NC-SA 4.0</span><span class="chip o">Código MIT</span></div>
+  <p>A jugar se dijo · Ecosistema digital de transferencia. Contenidos bajo licencia <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" target="_blank" rel="noopener">Creative Commons Atribución-NoComercial-CompartirIgual 4.0</a>. Repositorio: <a href="https://github.com/jgomez-lgtm" target="_blank" rel="noopener">github.com/jgomez-lgtm</a></p>
+</footer>
+<script>
+(function(){
+  var CAPS={
+    vel:"Velocidad y reacción", fue:"Fuerza", fv:"Fuerza-velocidad", dis:"Fuerza de disputa 1 vs 1", res:"Resistencia",
+    din:"Diferenciación dinámica", et:"Espacio-temporal", ori:"Orientación", equ:"Equilibrio", pas:"Pases",
+    con:"Conducciones y regates", rec:"Recepciones", lan:"Lanzamientos", cab:"Golpeo de cabeza", fut:"Juegos de fútbol",
+    por:"Portero", var:"Juegos variados"
+  };
+  // [n, nombre, edad mínima, capacidad, video]
+  var G=[
+    [1,"La cadena",8,"vel",1],[2,"Pepitas y pepotas",6,"vel",0],[3,"Las liebres, los perros y el cazador",9,"vel",0],[4,"Balón corredor",9,"vel",0],
+    [5,"Los brujos",6,"fue",0],[6,"Fútbol de cangrejos",10,"fue",1],
+    [7,"Los jinetes con balón",12,"fv",0],[8,"La pelota que pasa",12,"fv",0],[9,"El círculo saltante",14,"fv",0],
+    [10,"Pelea de gallos",9,"dis",1],[11,"La fila que se empuja",9,"dis",0],
+    [12,"Balón viajero",7,"res",0],[13,"El reloj",6,"res",0],[14,"4 contra 4 o 5 contra 5",12,"res",0],
+    [15,"Vaciar el campo",6,"din",0],[16,"A la caza del balón",7,"din",0],
+    [17,"Pasar y recibir el balón",8,"et",0],
+    [18,"La sombra",8,"ori",0],[19,"Cada uno en su casa",6,"ori",0],
+    [20,"Pulso gitano",9,"equ",0],[21,"Los diez pases",9,"pas",1],[22,"La muralla",6,"equ",1],
+    [23,"Balón por el círculo",10,"pas",0],[24,"Toca los conos",9,"pas",0],[25,"Fútbol a la isla",9,"pas",0],
+    [26,"Partido de regates",10,"con",0],[27,"Los paquetes",7,"con",0],[28,"A través de la barrera",10,"con",0],
+    [29,"El portero sin manos",8,"rec",0],[30,"Recepciona si puedes",11,"rec",0],
+    [31,"Lanza desde aquí",12,"lan",0],[32,"Juego de puntería",9,"lan",0],
+    [33,"Fútbol tenis",13,"cab",0],[34,"Partido de cabeza",11,"cab",0],
+    [35,"¡Cuántas porterías!",10,"fut",0],[36,"Cada uno en su sitio",9,"fut",0],[37,"Fútbol de ataque",13,"fut",0],
+    [38,"Lanzamientos engañosos",7,"por",0],[39,"El triángulo lanzador",9,"por",0],[40,"Partido para el portero",8,"por",0],
+    [41,"Fútbol individual",8,"var",0],[42,"Balón al poste",8,"var",0],[43,"Torneo de divisiones",8,"var",0],[44,"El portero móvil",11,"var",0]
+  ];
+  var $=function(id){return document.getElementById(id)};
+  var sel=$("f-cap");
+  Object.keys(CAPS).forEach(function(k){var o=document.createElement("option");o.value=k;o.textContent=CAPS[k];sel.appendChild(o)});
+  function draw(){
+    var age=+$("f-age").value, cap=sel.value, q=$("f-q").value.trim().toLowerCase();
+    var list=G.filter(function(g){
+      return (age===99 || g[2]<=age) && (!cap || g[3]===cap) && (!q || g[1].toLowerCase().indexOf(q)>-1);
+    });
+    var box=$("games"); box.innerHTML="";
+    list.forEach(function(g){
+      var a=document.createElement("article"); a.className="game";
+      a.innerHTML='<div class="top"><span class="no">N.º '+g[0]+'</span>'+(g[4]?'<span class="chip g">Video</span>':'')+'</div><h4></h4><div class="meta"><span class="chip o"></span><span class="chip">Desde '+g[2]+' años</span></div>';
+      a.querySelector("h4").textContent=g[1];
+      a.querySelector(".chip.o").textContent=CAPS[g[3]];
+      box.appendChild(a);
+    });
+    $("f-count").textContent=list.length+" de 44 juegos";
+    if(!list.length){box.innerHTML='<p class="count">Ningún juego coincide. Prueba otra edad o capacidad.</p>'}
+    try{localStorage.setItem("ajsd-f",JSON.stringify({a:$("f-age").value,c:cap}))}catch(e){}
+  }
+  try{var s=JSON.parse(localStorage.getItem("ajsd-f")||"null"); if(s){$("f-age").value=s.a; sel.value=s.c}}catch(e){}
+  ["f-age","f-cap"].forEach(function(id){$(id).addEventListener("change",draw)});
+  $("f-q").addEventListener("input",draw);
+  $("f-reset").addEventListener("click",function(){$("f-age").value="99";sel.value="";$("f-q").value="";draw()});
+  draw();
+
+  // nav highlight
+  var links=[].slice.call(document.querySelectorAll("nav.side a"));
+  var map={}; links.forEach(function(l){map[l.dataset.s]=l});
+  if("IntersectionObserver" in window){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ links.forEach(function(l){l.classList.remove("on")}); var l=map[e.target.id]; if(l){l.classList.add("on"); if(window.innerWidth<=960){var n=l.parentNode; n.scrollLeft=l.offsetLeft-n.clientWidth/2+l.clientWidth/2}} } });
+    },{rootMargin:"-30% 0px -60% 0px"});
+    Object.keys(map).forEach(function(id){var el=document.getElementById(id); if(el) io.observe(el)});
+  }
+})();
+</script>
+</main>
+</div>
+</div>
+<script data-goatcounter="https://ajugarsedijo.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body></html>

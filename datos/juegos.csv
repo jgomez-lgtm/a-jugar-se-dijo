@@ -1,0 +1,45 @@
+numero,juego,edad_minima,capacidad,video_referencia
+1,"La cadena",8,"Velocidad y reacción",si
+2,"Pepitas y pepotas",6,"Velocidad y reacción",no
+3,"Las liebres, los perros y el cazador",9,"Velocidad y reacción",no
+4,"Balón corredor",9,"Velocidad y reacción",no
+5,"Los brujos",6,"Fuerza",no
+6,"Fútbol de cangrejos",10,"Fuerza",si
+7,"Los jinetes con balón",12,"Fuerza-velocidad",no
+8,"La pelota que pasa",12,"Fuerza-velocidad",no
+9,"El círculo saltante",14,"Fuerza-velocidad",no
+10,"Pelea de gallos",9,"Fuerza de disputa 1 vs 1",si
+11,"La fila que se empuja",9,"Fuerza de disputa 1 vs 1",no
+12,"Balón viajero",7,"Resistencia",no
+13,"El reloj",6,"Resistencia",no
+14,"4 contra 4 o 5 contra 5",12,"Resistencia",no
+15,"Vaciar el campo",6,"Diferenciación dinámica",no
+16,"A la caza del balón",7,"Diferenciación dinámica",no
+17,"Pasar y recibir el balón",8,"Espacio-temporal",no
+18,"La sombra",8,"Orientación",no
+19,"Cada uno en su casa",6,"Orientación",no
+20,"Pulso gitano",9,"Equilibrio",no
+21,"Los diez pases",9,"Pases",si
+22,"La muralla",6,"Equilibrio",si
+23,"Balón por el círculo",10,"Pases",no
+24,"Toca los conos",9,"Pases",no
+25,"Fútbol a la isla",9,"Pases",no
+26,"Partido de regates",10,"Conducciones y regates",no
+27,"Los paquetes",7,"Conducciones y regates",no
+28,"A través de la barrera",10,"Conducciones y regates",no
+29,"El portero sin manos",8,"Recepciones",no
+30,"Recepciona si puedes",11,"Recepciones",no
+31,"Lanza desde aquí",12,"Lanzamientos",no
+32,"Juego de puntería",9,"Lanzamientos",no
+33,"Fútbol tenis",13,"Golpeo de cabeza",no
+34,"Partido de cabeza",11,"Golpeo de cabeza",no
+35,"¡Cuántas porterías!",10,"Juegos de fútbol",no
+36,"Cada uno en su sitio",9,"Juegos de fútbol",no
+37,"Fútbol de ataque",13,"Juegos de fútbol",no
+38,"Lanzamientos engañosos",7,"Portero",no
+39,"El triángulo lanzador",9,"Portero",no
+40,"Partido para el portero",8,"Portero",no
+41,"Fútbol individual",8,"Juegos variados",no
+42,"Balón al poste",8,"Juegos variados",no
+43,"Torneo de divisiones",8,"Juegos variados",no
+44,"El portero móvil",11,"Juegos variados",no
